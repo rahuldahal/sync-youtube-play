@@ -18,15 +18,15 @@
     });
   }
 
-  function openSyncTube() {
+  function openWatch2Gether() {
     if (isPlaylistEmpty) {
       return console.log("There are no videos on the playlist");
     }
 
-    chrome.tabs.create({ url: "https://sync-tube.de/create", active: true });
+    chrome.tabs.create({ url: "https://w2g.tv", active: true });
   }
 
   // Event Listeners
   selectVideosBtn.addEventListener("click", sendMessage);
-  syncPlaylistBtn.addEventListener("click", openSyncTube);
+  syncPlaylistBtn.addEventListener("click", openWatch2Gether);
 })();
