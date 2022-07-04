@@ -31,7 +31,11 @@
         searchInput.dispatchEvent(new ClipboardEvent("paste"));
         currentIndex++;
 
-        currentIndex > LAST_INDEX && clearInterval(searchAndAddIntervalId);
+        if (currentIndex > LAST_INDEX) {
+          clearInterval(searchAndAddIntervalId);
+          copyInviteLink();
+        }
+
         setTimeout(() => addToPlaylist(currentIndex), 2000);
       }
 
@@ -61,6 +65,15 @@
     const initialVideoTitle = document.querySelector(".step.forward.icon");
     console.log(initialVideoTitle);
     initialVideoTitle.click();
+  }
+
+  function copyInviteLink() {
+    const copyButton = document.querySelectorAll(
+      "[data-w2g=\"['copyInvite', ['event', 'mousedown']]\"]"
+    )[1];
+    copyButton.dispatchEvent(new MouseEvent("mousedown"));
+
+    console.log("copied!?");
   }
 
   console.log("this is youtube");
