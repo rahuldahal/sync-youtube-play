@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Sync Youtube Play",
-  "description": "Sync Youtube videos via sync-tube",
+  "description": "Sync Youtube videos via Watch2Gether",
   "version": "1.0",
   "icons": {
     "16": "./imgs/sync-16.png",
@@ -14,9 +14,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*.youtube.com/*", "https://*.sync-tube.de/*"],
+      "matches": ["https://*.youtube.com/*", "https://*.w2g.tv/*"],
       "css": ["styles.css"],
-      "js": ["contentScript.js"]
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
     }
   ],
   "permissions": ["storage", "tabs", "activeTab"]
