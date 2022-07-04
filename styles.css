@@ -45,13 +45,12 @@ html {
   position: relative;
   display: inline-flex;
   align-items: center;
-  background-color: var(--primary-400);
+  cursor: not-allowed;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
   color: var(--white);
-  cursor: pointer;
+  opacity: 0.7;
   font-size: 1rem;
   font-weight: 600;
   justify-content: center;
@@ -65,17 +64,24 @@ html {
   width: auto;
 }
 
-.CTA__button:hover,
-.CTA__button:focus {
+.CTA__button:not(:disabled) {
+  background-color: var(--primary-400);
+  color: var(--black);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.CTA__button:hover:not(:disabled),
+.CTA__button:focus:not(:disabled) {
   background-color: var(--primary-300);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 
-.CTA__button:hover {
+.CTA__button:hover:not(:disabled) {
   transform: translateY(-1px);
 }
 
-.CTA__button:active {
+.CTA__button:active:not(:disabled) {
   background-color: var(--primary-500);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);

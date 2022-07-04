@@ -13,20 +13,30 @@
         { getVideoIds: true },
         ({ playlistVideosCount }) => {
           isPlaylistEmpty = !playlistVideosCount;
+          playlistVideosCount && enableSyncBtn();
         }
       );
     });
   }
 
-  function openWatch2Gether() {
-    if (isPlaylistEmpty) {
-      return console.log("There are no videos on the playlist");
-    }
+  function enableSyncBtn() {
+    syncPlaylistBtn.removeAttribute("disabled");
+    syncPlaylistBtn.setAttribute("title", "Sync with watch2gether");
+    return;
+  }
 
+  function disableSyncBtn() {
+    syncPlaylistBtn.setAttribute("disabled");
+    syncPlaylistBtn.setAttribute("title", "Add videos in the queue to enable");
+  }
+
+  function openWatch2Gether() {
     chrome.tabs.create({
       url: "https://w2g.tv/?initiator=extension",
       active: true,
     });
+
+    return disableSyncBtn();
   }
 
   // Event Listeners
