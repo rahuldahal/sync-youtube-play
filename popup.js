@@ -23,7 +23,10 @@
       return console.log("There are no videos on the playlist");
     }
 
-    chrome.tabs.create({ url: "https://w2g.tv", active: true });
+    chrome.tabs.create({
+      url: "https://w2g.tv/?initiator=extension",
+      active: true,
+    });
   }
 
   // Event Listeners

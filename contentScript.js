@@ -1,16 +1,18 @@
 (() => {
   const currentURL = new URL(window.location.href);
-  const { hostname, pathname: fullPathname } = currentURL;
+  const { hostname, pathname: fullPathname, searchParams } = currentURL;
   const pathname = fullPathname.split("/")[1]; // '/rooms/xefcwx6xz0n98xre3br' => 'rooms'
+  const urlSearchParams = new URLSearchParams(searchParams);
 
   if (hostname === "w2g.tv") {
     console.log("this is sync tube");
-    if (pathname === "") {
+    if (pathname === "" && urlSearchParams.get("initiator") === "extension") {
       return createRoom();
     }
     if (pathname === "rooms") {
       return addVideos();
     }
+    return console.log("Not initiated from extension");
   }
 
   function createRoom() {
