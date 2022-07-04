@@ -88,6 +88,7 @@
       chrome.storage.sync.set({ videoIds }, () => {
         res({ playlistVideosCount: videoIds.length });
       });
+      return true;
     }
   });
 })();
